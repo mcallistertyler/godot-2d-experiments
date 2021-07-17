@@ -9,7 +9,7 @@ extents = Vector2( 31.875, 31.625 )
 [node name="World" type="Node2D"]
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
-position = Vector2( 457.516, 252.285 )
+position = Vector2( 500, 300 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Enemy"]

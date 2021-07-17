@@ -1,0 +1,25 @@
+{
+"bullet_pool": [
+    {
+      "type": "regular",
+      "damage_modifier": 1.4,
+      "direction": "N",
+      "speed": 200,
+      "ttnb": 100
+    },
+    {
+        "type": "regular",
+        "damage_modifier": 1.4,
+        "direction": "S",
+        "speed": 200,
+        "ttnb": 150 
+    },
+    {
+        "type": "regular",
+        "damage_modifier": 1.4,
+        "direction": "W",
+        "speed": 150,
+        "ttnb": 300
+    }
+  ]
+}

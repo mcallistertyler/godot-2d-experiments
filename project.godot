@@ -13,6 +13,15 @@ config_version=4
 config/name="2dStuff"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=320
+window/size/height=288
+window/size/test_width=960
+window/size/test_height=864
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [importer_defaults]
 
 texture={

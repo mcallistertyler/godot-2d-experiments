@@ -4,7 +4,7 @@ pipeline {
 	stages {
 		stage('Build game') {
 			steps {
-				echo 'Building game'
+				echo 'Building da game'
 			}
 
 		}

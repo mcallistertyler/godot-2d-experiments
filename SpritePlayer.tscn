@@ -417,6 +417,8 @@ start_node = "Idle"
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -0.521739 )
+scale = Vector2( 1, 0.869565 )
 texture = ExtResource( 1 )
 centered = false
 offset = Vector2( -1, -4 )
@@ -450,3 +452,7 @@ parameters/playback = SubResource( 36 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Turn/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 8, 8 )
+cast_to = Vector2( 0, 8 )

@@ -1,10 +1,12 @@
 extends KinematicBody2D
 
-export var walk_speed = 4.0
+export var walk_speed = 5.0
 const TILE_SIZE = 16
 
 onready var anim_tree = $AnimationTree
 onready var anim_state = anim_tree.get("parameters/playback")
+
+onready var ray = $RayCast2D
 
 enum PlayerState { IDLE, TURNING, WALKING }
 enum FacingDirection { LEFT, RIGHT, UP, DOWN }
@@ -63,13 +65,19 @@ func process_player_input():
 		anim_state.travel("Idle")
 
 func move_player(delta):
-	percent_moved_to_next_tile += walk_speed * delta
-	if percent_moved_to_next_tile >= 1.0:
-		position = initial_position + (TILE_SIZE * input_direction)
-		percent_moved_to_next_tile = 0.0
-		is_moving = false
+	var desired_step: Vector2 = input_direction * TILE_SIZE / 2 # gets vector 2 of the next tile from the current
+	ray.cast_to = desired_step
+	ray.force_raycast_update()
+	if !ray.is_colliding():
+		percent_moved_to_next_tile += walk_speed * delta
+		if percent_moved_to_next_tile >= 1.0:
+			position = initial_position + (TILE_SIZE * input_direction)
+			percent_moved_to_next_tile = 0.0
+			is_moving = false
+		else:
+			position = initial_position + (TILE_SIZE * input_direction * percent_moved_to_next_tile)
 	else:
-		position = initial_position + (TILE_SIZE * input_direction * percent_moved_to_next_tile)
+		is_moving = false
 
 func _physics_process(delta):
 	if player_state == PlayerState.TURNING:
@@ -82,7 +90,3 @@ func _physics_process(delta):
 	else:
 		anim_state.travel("Idle")
 		is_moving = false
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
